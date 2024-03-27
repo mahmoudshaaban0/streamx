@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:streamx/core/helpers/spacing.dart';
+import 'package:streamx/features/home/data/movie_item_data.dart';
+import 'package:streamx/features/home/ui/widgets/category_item_widget.dart';
+import 'package:streamx/features/home/ui/widgets/custom_appbar_widget.dart';
+import 'package:streamx/features/home/ui/widgets/headline_bar.dart';
+import 'package:streamx/features/home/ui/widgets/movie_item_widget.dart';
+import '../widgets/custom_carousel_slider.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+            child: Column(
+              children: [
+                const CucstomAppBarWidget(),
+                verticalSpace(24),
+                const CustomCarouselSlider(),
+                verticalSpace(20),
+                HeadLineWidget(
+                    title: 'Recommended for you', showAll: 'See All'),
+                verticalSpace(16),
+                SizedBox(
+                  width: double.infinity,
+                  height: 250.h,
+                  child: ListView.builder(
+                      itemCount: 3,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10.w),
+                          child: MovieItemWidget(
+                            title: movieItems[index].title,
+                            subTitle: movieItems[index].description,
+                            imageUrl: movieItems[index].image,
+                          ),
+                        );
+                      }),
+                ),
+                verticalSpace(16),
+                HeadLineWidget(title: 'Top Searches', showAll: 'See All'),
+                verticalSpace(16),
+                ListView.builder(
+                  itemCount: 3,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: CategoryItemWidget(
+                        title: movieItems[index].title,
+                        subTitle: movieItems[index].description,
+                        imageUrl: movieItems[index].image,
+                      ),
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
