@@ -1,16 +1,23 @@
-# streamx
+# StreamX
 
-A new Flutter project.
+The StreamX App is an open-source project designed for learning and collaboration. Built with [Flutter Framework], Flutter, this application serves as a practical guide to implementing real-world features, including API integration, responsive UI design, and state management. By utilizing The Movie Database (TMDB) API, the app offers users an interactive way to discover and learn more about their favorite movies.
 
-## Getting Started
+## Goals
 
-This project is a starting point for a Flutter application.
+- **Discover**: Browse through the latest, most popular, and top-rated movies
+- **Look up**: movies using intuitive search functionality.
+- **Details**: View detailed information about movies, including synopses, ratings, and cast.
+- **Responsive Design**: A UI that adapts seamlessly across devices, offering a consistent user experience.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<p float="center">
+  <img src="screenshots\Screenshot_1.png" width="250" />
+    <img src="screenshots\Screenshot_2.png" width="250" />
+   <img src="screenshots\Screenshot_3.png" width="250" />
+</p>
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+<p float="center">
+  <img src="screenshots\Screenshot_4.png" width="250" />
+</p>
+
