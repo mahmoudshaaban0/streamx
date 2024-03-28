@@ -14,19 +14,20 @@ class DioFactory {
     if (dio == null) {
       dio = Dio();
       dio!
+        ..options.baseUrl = ApiConstants.apiBaseUrl
+        ..options.headers = {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${ApiConstants.token}'
+        }
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut;
 
       dio?.interceptors.add(InterceptorsWrapper(
         onRequest: (options, handler) async {
-          options.headers.addAll({
-            'Accept': 'application/json',
-            'Authorization': 'Bearer ${ApiConstants.token}',
-          });
+          options.headers.addAll({});
           return handler.next(options); //continue
         },
         onResponse: (response, handler) {
-          // Do something with response data
           return handler.next(response); // continue
         },
         onError: (DioException e, handler) {

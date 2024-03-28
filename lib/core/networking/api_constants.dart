@@ -2,8 +2,12 @@ class ApiConstants {
   static const String apiBaseUrl = "https://api.themoviedb.org/3/";
 
   static const String token =
-      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NDA4YTA1ZmNjODc0NzUyZGZkMzEwNzBmMjlhMTVmNyIsInN1YiI6IjVlY2Q1Mjg3YTNiNWU2MDAyMjU5YTE0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.g7K2SCuaGvlMNO_C5PAHULyeb4Hb_m2kjX5WYNb8b6E";
+      "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZmNiYWJmODNhMDE4ZTgyMDdjZmJmMzIwMmQ0MzVjYyIsInN1YiI6IjVlY2Q1Mjg3YTNiNWU2MDAyMjU5YTE0NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.D8GK43j1pkcsN44bXJAazix-C-5xWgAvEwObxI2jq98";
   static const String servicesImagePath = "https://image.tmdb.org/t/p/w500/";
+
+  static const trendingEndPoint = 'trending/all/week';
+  static const topRatedEndPoint = 'tv/top_rated';
+  static const upComingEndPoint = 'movie/upcoming';
 }
 
 class ApiErrors {

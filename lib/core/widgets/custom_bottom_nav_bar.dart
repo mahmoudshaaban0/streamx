@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:streamx/features/home/ui/screens/home_screen.dart';
+import 'package:streamx/features/search/ui/screens/search_screen.dart';
 
 import '../constants/assets.dart';
 
@@ -41,7 +42,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
             ),
           ),
           PersistentTabConfig(
-            screen: Container(),
+            screen: SearchScreen(),
             item: ItemConfig(
               icon: SvgPicture.asset(Assets.iconsBottomNavSearchActive),
               inactiveIcon:

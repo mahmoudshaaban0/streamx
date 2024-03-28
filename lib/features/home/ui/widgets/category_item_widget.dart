@@ -26,8 +26,8 @@ class CategoryItemWidget extends StatelessWidget {
           child: SizedBox(
             height: 80.h,
             width: 120.w,
-            child: Image.asset(
-              imageUrl,
+            child: Image.network(
+              "http://image.tmdb.org/t/p/w780/$imageUrl",
               fit: BoxFit.cover,
             ),
           ),
@@ -36,15 +36,23 @@ class CategoryItemWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: AppTextStyle.fMulishB2Bold,
+            SizedBox(
+              width: 150.w,
+              child: Text(
+                title,
+                style: AppTextStyle.fMulishB2Bold,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             verticalSpace(4),
-            Text(
-              subTitle,
-              style: AppTextStyle.fMulishB5Bold
-                  .copyWith(color: const Color(0xff4C4E55)),
+            SizedBox(
+              width: 150.w,
+              child: Text(
+                subTitle,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextStyle.fMulishB5Bold
+                    .copyWith(color: const Color(0xff4C4E55)),
+              ),
             ),
           ],
         ),

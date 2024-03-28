@@ -1,6 +1,6 @@
 # StreamX
 
-The StreamX App is an open-source project designed for learning and collaboration. Built with [Flutter Framework], Flutter, this application serves as a practical guide to implementing real-world features, including API integration, responsive UI design, and state management. By utilizing The Movie Database (TMDB) API, the app offers users an interactive way to discover and learn more about their favorite movies.
+The StreamX App is an open-source project designed for learning and collaboration. Built with [Flutter Framework], this application serves as a practical guide to implementing real-world features, including API integration, responsive UI design, and state management. By utilizing The Movie Database (TMDB) API, the app offers users an interactive way to discover and learn more about their favorite movies.
 
 ## Goals
 
@@ -8,6 +8,21 @@ The StreamX App is an open-source project designed for learning and collaboratio
 - **Look up**: movies using intuitive search functionality.
 - **Details**: View detailed information about movies, including synopses, ratings, and cast.
 - **Responsive Design**: A UI that adapts seamlessly across devices, offering a consistent user experience.
+
+## Packages Used
+- ScreenUtil
+- Bloc
+- Freezed
+- Dio
+- Json Serializable
+- Go Router
+- Carousel Slider
+- Shimmer
+- Flutter ScreenUtil
+- Shared Preferences
+- Image Picker
+- Get It
+- Flutter Localization
 
 
 <p float="center">

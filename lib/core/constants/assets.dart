@@ -49,6 +49,14 @@ class Assets {
   /// assets/icons/search_home.svg
   static const String iconsSearchHome = "assets/icons/search_home.svg";
 
+  /// Assets for iconsSearchIcon
+  /// assets/icons/search_icon.svg
+  static const String iconsSearchIcon = "assets/icons/search_icon.svg";
+
+  /// Assets for iconsSearchStar
+  /// assets/icons/search_star.svg
+  static const String iconsSearchStar = "assets/icons/search_star.svg";
+
   /// Assets for iconsVideoPlay
   /// assets/icons/video_play.svg
   static const String iconsVideoPlay = "assets/icons/video_play.svg";

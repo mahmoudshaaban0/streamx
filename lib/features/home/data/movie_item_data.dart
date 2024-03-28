@@ -26,5 +26,33 @@ List<MovieItemData> movieItems = [
   MovieItemData(
       title: 'The Greatest Showman',
       image: Assets.imagesJoe,
-      description: 'Action')
+      description: 'Action'),
+  MovieItemData(
+      title: 'The Batman',
+      image: Assets.imagesTheGreatestshow,
+      description: 'Action'),
+  MovieItemData(
+      title: 'Avatar 2', image: Assets.imagesNoBody, description: 'Romance'),
+  MovieItemData(
+      title: 'Avengers: Endgame',
+      image: Assets.imagesJoe,
+      description: 'Drama'),
+  MovieItemData(
+      title: 'The Greatest Showman',
+      image: Assets.imagesJoe,
+      description: 'Action'),
+  MovieItemData(
+      title: 'The Batman',
+      image: Assets.imagesTheGreatestshow,
+      description: 'Action'),
+  MovieItemData(
+      title: 'Avatar 2', image: Assets.imagesNoBody, description: 'Romance'),
+  MovieItemData(
+      title: 'Avengers: Endgame',
+      image: Assets.imagesJoe,
+      description: 'Drama'),
+  MovieItemData(
+      title: 'The Greatest Showman',
+      image: Assets.imagesJoe,
+      description: 'Action'),
 ];

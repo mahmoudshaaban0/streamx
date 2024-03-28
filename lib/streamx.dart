@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:streamx/core/navigation/app_router.dart';
 import 'package:streamx/core/theme/app_theme.dart';
+import 'package:streamx/features/home/logic/cubit/trending_movie_cubit.dart';
+import 'package:streamx/features/home/repo/trending_movie_repo.dart';
+import 'package:streamx/features/search/logic/cubit/upcoming_cubit.dart';
+import 'package:streamx/features/search/repo/upcoming_repo.dart';
 
 class StreamX extends StatelessWidget {
   const StreamX({super.key});
@@ -11,11 +16,20 @@ class StreamX extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
-      child: MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          title: 'StreamX',
-          theme: getApplicationTheme(),
-          routerConfig: AppRouter().router),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<TrendingMovieCubit>(
+              create: (BuildContext context) =>
+                  TrendingMovieCubit(TrendingMoviesRepo())),
+          BlocProvider<UpcomingCubit>(
+              create: (BuildContext context) => UpcomingCubit(UpComingRepo()))
+        ],
+        child: MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: 'StreamX',
+            theme: getApplicationTheme(),
+            routerConfig: AppRouter().router),
+      ),
     );
   }
 }

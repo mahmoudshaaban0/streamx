@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:streamx/core/constants/assets.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_textstyle.dart';
 
 // ignore: must_be_immutable
-class MovieItemWidget extends StatelessWidget {
+class SearchItemWidget extends StatelessWidget {
   String title;
   String subTitle;
   String imageUrl;
 
-  MovieItemWidget(
+  SearchItemWidget(
       {super.key,
       required this.title,
       required this.subTitle,
@@ -37,7 +39,8 @@ class MovieItemWidget extends StatelessWidget {
           ),
         ),
         verticalSpace(8),
-        Expanded(
+        SizedBox(
+          width: 150.w,
           child: Text(
             title,
             style: AppTextStyle.fMulishB3Bold,
@@ -45,10 +48,17 @@ class MovieItemWidget extends StatelessWidget {
           ),
         ),
         verticalSpace(4),
-        Text(
-          subTitle,
-          style: AppTextStyle.fMulishB5Bold
-              .copyWith(color: const Color(0xff4C4E55)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SvgPicture.asset(Assets.iconsSearchStar),
+            horizontalSpace(4),
+            Text(
+              subTitle,
+              style: AppTextStyle.fMulishB5Bold
+                  .copyWith(color: const Color(0xff4C4E55)),
+            ),
+          ],
         ),
       ],
     );
