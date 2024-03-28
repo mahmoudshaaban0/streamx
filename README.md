@@ -34,5 +34,7 @@ The StreamX App is an open-source project designed for learning and collaboratio
 
 <p float="center">
   <img src="screenshots\Screenshot_4.png" width="250" />
+  <img src="screenshots\Screenshot_5.png" width="250" />
+
 </p>
 
