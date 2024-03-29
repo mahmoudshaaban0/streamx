@@ -41,6 +41,10 @@ class Assets {
   /// assets/icons/bottom_nav_search_inactive.svg
   static const String iconsBottomNavSearchInactive = "assets/icons/bottom_nav_search_inactive.svg";
 
+  /// Assets for iconsErrorIcon
+  /// assets/icons/error_icon.svg
+  static const String iconsErrorIcon = "assets/icons/error_icon.svg";
+
   /// Assets for iconsNotificationHome
   /// assets/icons/notification_home.svg
   static const String iconsNotificationHome = "assets/icons/notification_home.svg";

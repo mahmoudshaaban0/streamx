@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:streamx/core/helpers/spacing.dart';
+import 'package:streamx/core/widgets/global_error_widget.dart';
 import 'package:streamx/features/home/logic/cubit/top_rated_cubit.dart';
 import 'package:streamx/features/home/logic/cubit/top_rated_state.dart';
 import 'package:streamx/features/home/logic/cubit/trending_movie_cubit.dart';
@@ -55,7 +56,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context, state) {
                     return state.maybeWhen(
                         loading: () => const MovieSkeltonWidget(),
-                        failure: (error) => Text(error),
+                        failure: (error) => GlobalErrorWidget(
+                              onRetry: () {
+                                context
+                                    .read<TrendingMovieCubit>()
+                                    .getTrendingMovies();
+                                context
+                                    .read<TopRatedCubit>()
+                                    .getTopRatedMovies();
+                              },
+                            ),
                         success: (media) {
                           return SizedBox(
                             width: double.infinity,

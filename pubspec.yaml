@@ -62,6 +62,7 @@ dependencies:
   # shimmer effect for loading instead of the normal loading indicator
   shimmer: ^3.0.0
   persistent_bottom_nav_bar_v2: ^5.0.0
+  cached_network_image: ^3.3.1
 
 
 

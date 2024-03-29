@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:streamx/core/constants/assets.dart';
+import 'package:streamx/core/helpers/app_functions.dart';
 
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/theme/app_colors.dart';
@@ -30,10 +32,13 @@ class MovieItemWidget extends StatelessWidget {
             height: 180.h,
             width: 120.w,
             color: AppColors.primaryColor,
-            child: Image.network(
-              "http://image.tmdb.org/t/p/w780/$imageUrl",
-              errorBuilder: ((context, error, stackTrace) =>
-                  Text(error.toString())),
+            child: CachedNetworkImage(
+              memCacheWidth: 140.cacheSize(context),
+              memCacheHeight: 180.cacheSize(context),
+              imageUrl: "http://image.tmdb.org/t/p/w780/$imageUrl",
+              placeholder: (context, url) => Container(
+                color: Colors.grey[300],
+              ),
               fit: BoxFit.cover,
             ),
           ),

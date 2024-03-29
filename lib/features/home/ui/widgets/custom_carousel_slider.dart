@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:streamx/core/helpers/app_functions.dart';
 import 'package:streamx/core/theme/app_colors.dart';
 
 import '../../data/dummy_carousel_data.dart';
@@ -29,11 +31,23 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(24.0)),
                       child: Stack(
-                        children: <Widget>[
-                          Image.network(item.imgUrl,
-                              height: 220.h,
-                              fit: BoxFit.cover,
-                              width: double.infinity),
+                        children: [
+                          CachedNetworkImage(
+                            imageUrl: item.imgUrl,
+                            fit: BoxFit.cover,
+                            height: 220.h,
+                            width: double.infinity,
+                            memCacheWidth: 500.cacheSize(context),
+                            memCacheHeight: 220.cacheSize(context),
+                            errorWidget: (context, url, error) => Container(
+                              color: Colors.grey[300],
+                            ),
+                            placeholder: (context, url) {
+                              return Container(
+                                color: Colors.grey[300],
+                              );
+                            },
+                          ),
                           Container(
                             height: 220.h,
                             width: double.infinity,

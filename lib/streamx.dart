@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:streamx/core/navigation/app_router.dart';
+import 'package:streamx/core/networking/network_info.dart';
 import 'package:streamx/core/theme/app_strings.dart';
 import 'package:streamx/core/theme/app_theme.dart';
 import 'package:streamx/features/home/logic/cubit/top_rated_cubit.dart';
@@ -22,10 +24,12 @@ class StreamX extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<TrendingMovieCubit>(
-              create: (BuildContext context) =>
-                  TrendingMovieCubit(TrendingMoviesRepo())),
+              create: (BuildContext context) => TrendingMovieCubit(
+                  TrendingMoviesRepo(
+                      NetworkInfoImpl(InternetConnectionChecker())))),
           BlocProvider<TopRatedCubit>(
-              create: (BuildContext context) => TopRatedCubit(TopRatedRepo())),
+              create: (BuildContext context) => TopRatedCubit(
+                  TopRatedRepo(NetworkInfoImpl(InternetConnectionChecker())))),
           BlocProvider<UpcomingCubit>(
               create: (BuildContext context) => UpcomingCubit(UpComingRepo()))
         ],

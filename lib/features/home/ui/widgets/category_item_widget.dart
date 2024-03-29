@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:streamx/core/helpers/app_functions.dart';
 
 import '../../../../core/constants/assets.dart';
 import '../../../../core/helpers/spacing.dart';
@@ -26,8 +28,13 @@ class CategoryItemWidget extends StatelessWidget {
           child: SizedBox(
             height: 80.h,
             width: 120.w,
-            child: Image.network(
-              "http://image.tmdb.org/t/p/w780/$imageUrl",
+            child: CachedNetworkImage(
+              memCacheWidth: 120.cacheSize(context),
+              memCacheHeight: 80.cacheSize(context),
+              imageUrl: "http://image.tmdb.org/t/p/w780/$imageUrl",
+              placeholder: (context, url) => Container(
+                color: Colors.grey[300],
+              ),
               fit: BoxFit.cover,
             ),
           ),
