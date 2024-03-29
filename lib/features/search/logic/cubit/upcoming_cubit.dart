@@ -8,6 +8,7 @@ class UpcomingCubit extends Cubit<UpcomingState> {
   UpcomingCubit(this._upComingRepo) : super(const UpcomingState.initial());
 
   void getUpcomingData() async {
+    emit(const UpcomingState.loading());
     final response = await _upComingRepo.getUpcomingData();
     response.when(success: (response) {
       emit(UpcomingState.success(response));

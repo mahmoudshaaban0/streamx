@@ -5,12 +5,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:streamx/core/constants/assets.dart';
 import 'package:streamx/core/helpers/spacing.dart';
 import 'package:streamx/core/theme/app_textstyle.dart';
-import 'package:streamx/features/home/logic/cubit/trending_movie_state.dart';
 import 'package:streamx/features/search/logic/cubit/upcoming_cubit.dart';
 import 'package:streamx/features/search/logic/cubit/upcoming_state.dart';
+import 'package:streamx/features/search/ui/widgets/search_item_skelton_widget.dart';
 import 'package:streamx/features/search/ui/widgets/search_item_widget.dart';
 
-import '../../../home/logic/cubit/trending_movie_cubit.dart';
 import '../widgets/category_item.dart';
 
 // ignore: must_be_immutable
@@ -53,28 +52,6 @@ class SearchScreen extends StatelessWidget {
                     icon: const Icon(Icons.settings),
                     onPressed: () {},
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    borderSide: BorderSide.none,
-                  ),
-                  filled: true,
-                  fillColor: Colors.white,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    borderSide: BorderSide(color: Colors.grey[700]!),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  disabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    borderSide: BorderSide(color: Colors.grey[300]!),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(28),
-                    borderSide: const BorderSide(color: Colors.red),
-                  ),
                 ),
               ),
               verticalSpace(16),
@@ -98,6 +75,7 @@ class SearchScreen extends StatelessWidget {
               BlocBuilder<UpcomingCubit, UpcomingState>(
                 builder: (context, state) {
                   return state.maybeWhen(
+                      loading: () => const SearchItemSketlonWIdget(),
                       orElse: () => const SizedBox(),
                       success: (movieItems) {
                         return GridView.builder(
@@ -116,7 +94,7 @@ class SearchScreen extends StatelessWidget {
                                   title: movieItems.results[index].title,
                                   subTitle: movieItems
                                       .results[index].voteAverage
-                                      .toString(),
+                                      .toStringAsFixed(2),
                                   imageUrl:
                                       movieItems.results[index].posterPath);
                             });

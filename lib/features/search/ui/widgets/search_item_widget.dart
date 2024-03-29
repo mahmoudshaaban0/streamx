@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:streamx/core/constants/assets.dart';
 
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_textstyle.dart';
 
 // ignore: must_be_immutable
@@ -29,7 +28,7 @@ class SearchItemWidget extends StatelessWidget {
           child: Container(
             height: 180.h,
             width: 120.w,
-            color: AppColors.primaryColor,
+            color: Colors.grey[300]!,
             child: Image.network(
               "http://image.tmdb.org/t/p/w780/$imageUrl",
               errorBuilder: ((context, error, stackTrace) =>

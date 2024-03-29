@@ -20,9 +20,6 @@ The StreamX App is an open-source project designed for learning and collaboratio
 - Shimmer
 - Flutter ScreenUtil
 - Shared Preferences
-- Image Picker
-- Get It
-- Flutter Localization
 
 
 <p float="center">

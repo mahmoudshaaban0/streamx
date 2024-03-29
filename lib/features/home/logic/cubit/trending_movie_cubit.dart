@@ -21,15 +21,4 @@ class TrendingMovieCubit extends Cubit<TrendingMovieState> {
       },
     );
   }
-
-  Future<void> getTopRatedMovies() async {
-    final response = await _trendingMoviesRepo.topRated();
-    debugPrint(response.toString());
-    response.when(
-      success: (response) {
-        emit(TrendingMovieState.loaded(response));
-      },
-      failure: (error) {},
-    );
-  }
 }
