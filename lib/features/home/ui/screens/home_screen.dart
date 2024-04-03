@@ -57,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     return state.maybeWhen(
                         loading: () => const MovieSkeltonWidget(),
                         failure: (error) => GlobalErrorWidget(
+                              text: error,
                               onRetry: () {
                                 context
                                     .read<TrendingMovieCubit>()
@@ -99,10 +100,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 HeadLineWidget(title: 'Top Searches', showAll: 'See All'),
                 verticalSpace(16),
                 BlocBuilder<TopRatedCubit, TopRatedState>(
+                  buildWhen: (previous, current) {
+                    return previous != current;
+                  },
                   builder: (context, state) {
                     return state.maybeWhen(
                       loading: () => const TopSearchItemSkeltonWidget(),
-                      failure: (error) => Text(error),
+                      failure: (error) => GlobalErrorWidget(
+                          text: error,
+                          onRetry: () {
+                            context
+                                .read<TrendingMovieCubit>()
+                                .getTrendingMovies();
+                            context.read<TopRatedCubit>().getTopRatedMovies();
+                          }),
                       orElse: () {
                         return const SizedBox();
                       },

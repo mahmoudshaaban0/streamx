@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:streamx/core/helpers/logging_service.dart';
 import 'package:streamx/features/search/logic/cubit/upcoming_state.dart';
 import 'package:streamx/features/search/repo/upcoming_repo.dart';
 
@@ -13,6 +14,7 @@ class UpcomingCubit extends Cubit<UpcomingState> {
     response.when(success: (response) {
       emit(UpcomingState.success(response));
     }, failure: (error) {
+      LoggingService.logError(error);
       emit(UpcomingState.failure(error));
     });
   }

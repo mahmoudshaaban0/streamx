@@ -1,30 +1,28 @@
 // To parse this JSON data, do
 //
-//     final upcoming = upcomingFromJson(jsonString);
+//     final searchResponse = searchResponseFromJson(jsonString);
 
 import 'dart:convert';
 
-Upcoming upcomingFromJson(String str) => Upcoming.fromJson(json.decode(str));
+SearchResponse searchResponseFromJson(String str) =>
+    SearchResponse.fromJson(json.decode(str));
 
-String upcomingToJson(Upcoming data) => json.encode(data.toJson());
+String searchResponseToJson(SearchResponse data) => json.encode(data.toJson());
 
-class Upcoming {
-  Dates dates;
+class SearchResponse {
   int page;
   List<Result> results;
   int totalPages;
   int totalResults;
 
-  Upcoming({
-    required this.dates,
+  SearchResponse({
     required this.page,
     required this.results,
     required this.totalPages,
     required this.totalResults,
   });
 
-  factory Upcoming.fromJson(Map<String, dynamic> json) => Upcoming(
-        dates: Dates.fromJson(json["dates"]),
+  factory SearchResponse.fromJson(Map<String, dynamic> json) => SearchResponse(
         page: json["page"],
         results:
             List<Result>.from(json["results"].map((x) => Result.fromJson(x))),
@@ -33,7 +31,6 @@ class Upcoming {
       );
 
   Map<String, dynamic> toJson() => {
-        "dates": dates.toJson(),
         "page": page,
         "results": List<dynamic>.from(results.map((x) => x.toJson())),
         "total_pages": totalPages,
@@ -41,39 +38,17 @@ class Upcoming {
       };
 }
 
-class Dates {
-  DateTime maximum;
-  DateTime minimum;
-
-  Dates({
-    required this.maximum,
-    required this.minimum,
-  });
-
-  factory Dates.fromJson(Map<String, dynamic> json) => Dates(
-        maximum: DateTime.parse(json["maximum"]),
-        minimum: DateTime.parse(json["minimum"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "maximum":
-            "${maximum.year.toString().padLeft(4, '0')}-${maximum.month.toString().padLeft(2, '0')}-${maximum.day.toString().padLeft(2, '0')}",
-        "minimum":
-            "${minimum.year.toString().padLeft(4, '0')}-${minimum.month.toString().padLeft(2, '0')}-${minimum.day.toString().padLeft(2, '0')}",
-      };
-}
-
 class Result {
   bool adult;
-  String backdropPath;
+  String? backdropPath;
   List<int> genreIds;
   int id;
   String originalLanguage;
   String originalTitle;
   String overview;
   double popularity;
-  String posterPath;
-  DateTime releaseDate;
+  String? posterPath;
+  String releaseDate;
   String title;
   bool video;
   double voteAverage;
@@ -106,7 +81,7 @@ class Result {
         overview: json["overview"],
         popularity: json["popularity"]?.toDouble(),
         posterPath: json["poster_path"],
-        releaseDate: DateTime.parse(json["release_date"]),
+        releaseDate: json["release_date"],
         title: json["title"],
         video: json["video"],
         voteAverage: json["vote_average"]?.toDouble(),
@@ -123,8 +98,7 @@ class Result {
         "overview": overview,
         "popularity": popularity,
         "poster_path": posterPath,
-        "release_date":
-            "${releaseDate.year.toString().padLeft(4, '0')}-${releaseDate.month.toString().padLeft(2, '0')}-${releaseDate.day.toString().padLeft(2, '0')}",
+        "release_date": releaseDate,
         "title": title,
         "video": video,
         "vote_average": voteAverage,

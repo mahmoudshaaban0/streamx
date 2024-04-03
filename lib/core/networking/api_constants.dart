@@ -8,6 +8,7 @@ class ApiConstants {
   static const trendingEndPoint = 'trending/all/week';
   static const topRatedEndPoint = 'tv/top_rated';
   static const upComingEndPoint = 'movie/upcoming';
+  static const searchEndPoint = 'search/movie';
 }
 
 class ApiErrors {

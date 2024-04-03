@@ -32,12 +32,15 @@ class SearchItemWidget extends StatelessWidget {
             width: 120.w,
             color: Colors.grey[300]!,
             child: CachedNetworkImage(
+              memCacheWidth: 140.cacheSize(context),
+              memCacheHeight: 180.cacheSize(context),
+              errorWidget: (context, url, error) => Container(
+                color: Colors.grey[300],
+              ),
               imageUrl: "http://image.tmdb.org/t/p/w780/$imageUrl",
               placeholder: (context, url) => Container(
                 color: Colors.grey[300],
               ),
-              memCacheHeight: 180.cacheSize(context),
-              memCacheWidth: 120.cacheSize(context),
               fit: BoxFit.cover,
             ),
           ),

@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:streamx/core/constants/assets.dart';
 import 'package:streamx/core/helpers/spacing.dart';
 import 'package:streamx/core/theme/app_textstyle.dart';
+import 'package:streamx/core/widgets/global_error_widget.dart';
 import 'package:streamx/features/search/logic/cubit/upcoming_cubit.dart';
 import 'package:streamx/features/search/logic/cubit/upcoming_state.dart';
 import 'package:streamx/features/search/ui/widgets/search_item_skelton_widget.dart';
@@ -77,6 +78,12 @@ class SearchScreen extends StatelessWidget {
                   return state.maybeWhen(
                       loading: () => const SearchItemSketlonWIdget(),
                       orElse: () => const SizedBox(),
+                      failure: (error) => GlobalErrorWidget(
+                            text: error,
+                            onRetry: () {
+                              context.read<UpcomingCubit>().getUpcomingData();
+                            },
+                          ),
                       success: (movieItems) {
                         return GridView.builder(
                             gridDelegate:
@@ -94,9 +101,9 @@ class SearchScreen extends StatelessWidget {
                                   title: movieItems.results[index].title,
                                   subTitle: movieItems
                                       .results[index].voteAverage
-                                      .toStringAsFixed(2),
+                                      .toString(),
                                   imageUrl:
-                                      movieItems.results[index].posterPath);
+                                      movieItems.results[index].backdropPath);
                             });
                       });
                 },

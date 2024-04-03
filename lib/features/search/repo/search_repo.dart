@@ -2,21 +2,23 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:streamx/features/search/data/upcoming_response.dart';
+import 'package:streamx/core/networking/api_constants.dart';
+import 'package:streamx/core/networking/api_result.dart';
+import 'package:streamx/core/networking/dio_factory.dart';
+import 'package:streamx/core/networking/network_info.dart';
+import 'package:streamx/features/search/data/search_request_response.dart';
 
-import '../../../core/networking/api_constants.dart';
-import '../../../core/networking/api_result.dart';
-import '../../../core/networking/dio_factory.dart';
-import '../../../core/networking/network_info.dart';
-
-class UpComingRepo {
-  final NetworkInfo networkInfo;
-  UpComingRepo(this.networkInfo);
-  Future<ApiResult<Upcoming>> getUpcomingData() async {
-    if (await networkInfo.isConnected) {
+class SearchRepo {
+  final NetworkInfo _networkInfo;
+  SearchRepo(this._networkInfo);
+  Future<ApiResult<SearchResponse>> getSearchResponse(String query) async {
+    if (await _networkInfo.isConnected) {
       try {
         final dio = DioFactory.getDio();
-        final response = await dio.get(ApiConstants.upComingEndPoint);
+        final response =
+            await dio.get(ApiConstants.searchEndPoint, queryParameters: {
+          'query': query,
+        });
 
         if (response.statusCode == 200) {
           final responseData = response.data;
@@ -30,7 +32,7 @@ class UpComingRepo {
             }
 
             debugPrint(decodedJson.toString());
-            return ApiResult.success(Upcoming.fromJson(decodedJson));
+            return ApiResult.success(SearchResponse.fromJson(decodedJson));
           } else {
             return const ApiResult.failure('Response data is null.');
           }
