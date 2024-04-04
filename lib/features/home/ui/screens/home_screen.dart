@@ -81,12 +81,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 10.w),
                                     child: MovieItemWidget(
-                                      title: media.results[index].title ?? '',
-                                      subTitle: media.results[index].voteAverage
-                                          .toStringAsFixed(2),
-                                      imageUrl:
-                                          media.results[index].backdropPath,
-                                    ),
+                                        title: media.results[index].title ?? '',
+                                        subTitle: media
+                                            .results[index].voteAverage
+                                            .toStringAsFixed(2),
+                                        imageUrl:
+                                            media.results[index].posterPath),
                                   );
                                 }),
                           );

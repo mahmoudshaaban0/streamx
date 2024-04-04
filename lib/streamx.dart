@@ -7,6 +7,7 @@ import 'package:streamx/core/theme/app_strings.dart';
 import 'package:streamx/core/theme/app_theme.dart';
 import 'package:streamx/features/home/logic/cubit/top_rated_cubit.dart';
 import 'package:streamx/features/home/logic/cubit/trending_movie_cubit.dart';
+import 'package:streamx/features/search/logic/cubit/search_cubit.dart';
 import 'package:streamx/features/search/logic/cubit/upcoming_cubit.dart';
 
 class StreamX extends StatelessWidget {
@@ -25,6 +26,8 @@ class StreamX extends StatelessWidget {
               create: (BuildContext context) => sl<TopRatedCubit>()),
           BlocProvider<UpcomingCubit>(
               create: (BuildContext context) => sl<UpcomingCubit>()),
+          BlocProvider<SearchCubit>(
+              create: (BuildContext context) => sl<SearchCubit>()),
         ],
         child: MaterialApp.router(
             debugShowCheckedModeBanner: false,

@@ -23,7 +23,7 @@ class MovieSkeltonWidget extends StatelessWidget {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Container(
-                width: 180.w,
+                width: 120.w,
                 height: 120.h,
                 decoration: BoxDecoration(
                   color: Colors.grey[300],

@@ -12,13 +12,10 @@ import '../../../../core/theme/app_textstyle.dart';
 class SearchItemWidget extends StatelessWidget {
   String title;
   String subTitle;
-  String imageUrl;
+  String? imageUrl;
 
   SearchItemWidget(
-      {super.key,
-      required this.title,
-      required this.subTitle,
-      required this.imageUrl});
+      {super.key, required this.title, required this.subTitle, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
