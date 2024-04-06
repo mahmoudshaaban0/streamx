@@ -12,6 +12,7 @@ class ApiConstants {
 }
 
 class ApiErrors {
+  static const String success = "success";
   static const String badRequestError = "badRequestError";
   static const String noContent = "noContent";
   static const String forbiddenError = "forbiddenError";

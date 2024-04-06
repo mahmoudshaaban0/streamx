@@ -1,19 +1,6 @@
-import 'package:json_annotation/json_annotation.dart';
+class FailureError {
+  int code; // 200, 201, 400, 303..500 and so on
+  String message; // error , success
 
-part 'api_error_model.g.dart';
-
-@JsonSerializable()
-class ApiErrorModel {
-  final String? message;
-  final int? code;
-
-  ApiErrorModel({
-    required this.message,
-    this.code,
-  });
-
-  factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
-      _$ApiErrorModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
+  FailureError(this.code, this.message);
 }

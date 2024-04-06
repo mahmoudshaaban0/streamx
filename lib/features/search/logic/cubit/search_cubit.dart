@@ -10,8 +10,13 @@ class SearchCubit extends Cubit<SearchState> {
   void getSearchData(String query) async {
     emit(const SearchState.loading());
     final response = await _searchRepo.getSearchResponse(query);
+
     LoggingService.logInfo(response.toString());
     response.when(success: (data) {
+      if (data.results.isEmpty) {
+        emit(const SearchState.empty());
+        return;
+      }
       emit(SearchState.loaded(data));
     }, failure: (error) {
       emit(SearchState.error(error));

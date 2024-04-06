@@ -52,4 +52,11 @@ class DioFactory {
       ),
     );
   }
+
+  Future<Response> get(
+      {required String endPoint, dynamic data, dynamic params}) async {
+    var response = await dio!.get('${ApiConstants.apiBaseUrl}$endPoint',
+        data: data, queryParameters: params);
+    return response;
+  }
 }

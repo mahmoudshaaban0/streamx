@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final movieItem = movieItemFromJson(jsonString);
+
 import 'dart:convert';
 
 MovieItem movieItemFromJson(String str) => MovieItem.fromJson(json.decode(str));
@@ -137,11 +141,12 @@ enum MediaType { MOVIE, TV }
 final mediaTypeValues =
     EnumValues({"movie": MediaType.MOVIE, "tv": MediaType.TV});
 
-enum OriginalLanguage { EN, JA, ZH }
+enum OriginalLanguage { EN, JA, KO, ZH }
 
 final originalLanguageValues = EnumValues({
   "en": OriginalLanguage.EN,
   "ja": OriginalLanguage.JA,
+  "ko": OriginalLanguage.KO,
   "zh": OriginalLanguage.ZH
 });
 

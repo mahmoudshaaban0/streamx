@@ -8,5 +8,6 @@ class SearchState with _$SearchState {
   const factory SearchState.initial() = _Initial;
   const factory SearchState.loading() = Loading;
   const factory SearchState.loaded(SearchResponse searchResponse) = Loaded;
+  const factory SearchState.empty() = Empty;
   const factory SearchState.error(String error) = Error;
 }

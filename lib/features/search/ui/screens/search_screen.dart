@@ -89,6 +89,14 @@ class SearchScreen extends StatelessWidget {
                 builder: (context, searchState) {
                   return searchState.maybeWhen(
                     loading: () => const SearchItemSketlonWIdget(),
+                    empty: () => GlobalErrorWidget(
+                      text: 'No data found',
+                      onRetry: () {
+                        context
+                            .read<SearchCubit>()
+                            .getSearchData(_controller.text);
+                      },
+                    ),
                     error: (error) => GlobalErrorWidget(
                       text: error,
                       onRetry: () {
